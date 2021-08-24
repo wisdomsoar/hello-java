@@ -88,6 +88,20 @@ public class ImageWebBrowserApp extends JFrame{
     }
 
     class SaveImageItemListener implements ActionListener{
+        
+        private boolean SaveAllItems = true;
+        
+        public SaveImageItemListener()
+        {
+            super();
+        }
+        
+        public SaveImageItemListener(boolean SaveAllItems)
+        {
+            super();
+            this.SaveAllItems = SaveAllItems;
+        }
+        
         @Override
         public void actionPerformed(ActionEvent e) {
             String folderName = fileUtility.dismissInvalidFoldername(currentTitle);
@@ -114,9 +128,12 @@ public class ImageWebBrowserApp extends JFrame{
                                            filename);
                 try {
                     ImageIO.write(bi, extension, outputfile);
-                    //if ( outputfile.length() < 50*1024 )
+                    if (!SaveAllItems)
                     {
-                    //   outputfile.delete();
+                        if ( outputfile.length() < 50*1024 )
+                        {
+                           outputfile.delete();
+                        }
                     }
                 } catch (IOException ex) {
                     Logger.getLogger(ImageWebBrowserApp.class.getName()).log(Level.SEVERE, null, ex);
@@ -137,10 +154,12 @@ public class ImageWebBrowserApp extends JFrame{
                 JMenuItem SelectAllItem = new JMenuItem("Select all images");
                 JMenuItem UnselectAllItem = new JMenuItem("Unselect all images");
                 JMenuItem SaveAllItem = new JMenuItem("Save all images");
+                JMenuItem SaveLargeItem = new JMenuItem("Save large images");
                 JMenuItem ViewSource = new JMenuItem("View source code");
                 SelectAllItem.addActionListener(new SelectOrUnselectAllItemListener(true));
                 UnselectAllItem.addActionListener(new SelectOrUnselectAllItemListener(false));
                 SaveAllItem.addActionListener(new SaveImageItemListener());
+                SaveLargeItem.addActionListener(new SaveImageItemListener(false));
                 ViewSource.addActionListener(new ActionListener(){
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -150,6 +169,7 @@ public class ImageWebBrowserApp extends JFrame{
                 popupMenu.add(SelectAllItem);
                 popupMenu.add(UnselectAllItem);
                 popupMenu.add(SaveAllItem);
+                popupMenu.add(SaveLargeItem);
                 popupMenu.add(ViewSource);
                 popupMenu.show(imagePanel, e.getX(), e.getY());
             }

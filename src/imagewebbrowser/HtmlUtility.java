@@ -62,17 +62,6 @@ class HtmlUtility {
         doc.setBaseUri(uri);
         ArrayList<String> ret = new ArrayList<String>();
         
-        Elements images = doc.select("img");
-        for (Element image : images) {
-            //String url = image.attr("abs:src");
-            ret.add(image.attr("abs:src"));
-            if (!image.attr("file").equals("")){
-                ret.add(image.attr("file"));
-            }
-        }
-        /* */
-        
-        
         Elements links = doc.select("a[href]");
         for (Element link : links) {
             if ( (link.attr("href")).contains(".jpg")  )
@@ -85,6 +74,18 @@ class HtmlUtility {
                 
             }
         }
+        
+        
+        
+        Elements images = doc.select("img");
+        for (Element image : images) {
+            //String url = image.attr("abs:src");
+            ret.add(image.attr("abs:src"));
+            if (!image.attr("file").equals("")){
+                ret.add(image.attr("file"));
+            }
+        }
+        /* */
         
         
         return ret;
