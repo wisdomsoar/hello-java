@@ -1,29 +1,12 @@
 package imagewebbrowser;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
 class HtmlUtility {
-    static public Document getDocument(String strUrl){
+    static public org.jsoup.nodes.Document getDocument(String strUrl){
         Document doc = null;
-        //try {
-            //doc = Jsoup.connect(strUrl).timeout(7*1000).get();
-            doc = Jsoup.parse(fetchHtml(strUrl));
-        //} catch (IOException ex) {
-        //    Logger.getLogger(HtmlUtility.class.getName()).log(Level.SEVERE, null, ex);
-        //}
+        doc = Jsoup.parse(fetchHtml(strUrl));
         return doc;
     }
     

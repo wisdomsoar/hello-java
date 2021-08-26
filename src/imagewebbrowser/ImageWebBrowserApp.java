@@ -1,4 +1,4 @@
-package imagewebbrowser;
+
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -7,10 +7,10 @@ import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+ import java.awt.event.ActionEvent;
+ import java.awt.event.ActionListener;
+ import java.awt.event.MouseAdapter;
+ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.beans.PropertyChangeEvent;
@@ -21,23 +21,23 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.ArrayList;
+ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JList;
+ import javax.swing.JComboBox;
+ import javax.swing.JFrame;
+ import javax.swing.JLabel;
+ import javax.swing.JList;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
+ import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
-import javax.swing.JSplitPane;
-import javax.swing.JToggleButton;
+ import javax.swing.JSplitPane;
+ import javax.swing.JToggleButton;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingUtilities;
 import javax.swing.border.LineBorder;
@@ -45,19 +45,20 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import org.jsoup.nodes.Document;
 
+
 public class ImageWebBrowserApp extends JFrame{
 
-    private String appName = "image web browser2: ";
-    private String currentTitle = "";
-    private String currentContent = "";
+    private String appName;
+    private String currentTitle ;
+    private String currentContent ;
     
     HyperLinkList collection;
     HyperLinkListModel model;
 
-    private ArrayList<Thread> loadImageThread = new ArrayList<Thread>();
+    private ArrayList<Thread> loadImageThread;
     private JLabel lblStatus;
-    private String fileSeparator = System.getProperty("file.separator");
-    private String lineSeparator = "\n";
+    private String fileSeparator;
+    private String lineSeparator;
     private JSplitPane splitPane;
     private JList controlList;
     final JFrame myThis = this;
@@ -319,6 +320,14 @@ public class ImageWebBrowserApp extends JFrame{
     }
     
     public ImageWebBrowserApp(){
+        appName = "image web browser2: ";
+        currentTitle = "";
+        currentContent = "";  
+        loadImageThread = new ArrayList<Thread>();
+        fileSeparator = System.getProperty("file.separator");
+        lineSeparator = "\n";
+        
+        
         ArrayList<HyperLink> list = new ArrayList<HyperLink>();
         JPanel framePanel = new JPanel();
         framePanel.setLayout(new BorderLayout());
