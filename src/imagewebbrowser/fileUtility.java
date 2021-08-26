@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package imagewebbrowser;
+
 
 import java.awt.Desktop;
 import java.io.BufferedReader;
@@ -18,7 +18,7 @@ class fileUtility {
     
     class RegionData implements Comparable {
         String name;
-        public ArrayList settings = new ArrayList();
+        public ArrayList<String> settings = new ArrayList<String>();
         
         public RegionData(String n){
             name = n;
@@ -66,7 +66,7 @@ class fileUtility {
     }
     
     public String getRegionData(String r){
-        Iterator it = Region.iterator();
+        Iterator<RegionData> it = Region.iterator();
         String ret = "";
         while(it.hasNext())
         {
